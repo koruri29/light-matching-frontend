@@ -14,8 +14,6 @@ import {
 } from '@mui/material'
 import Link from 'next/link'
 import { Controller, useForm } from 'react-hook-form'
-import RedirectIfAuthenticated from '@/components/auth/RedirectIfAuthenticated'
-import { AuthProvider } from '@/features/auth/auth/context'
 import { useRouter } from 'next/navigation'
 
 
@@ -56,74 +54,70 @@ export const Login = () => {
 
 
   return (
-    <AuthProvider>
-      <RedirectIfAuthenticated>
-        <Card
-          className='w-72 mx-auto'
+    <Card
+      className='w-72 mx-auto'
+    >
+      <CardContent>
+
+        <Typography>
+          会員ログイン
+        </Typography>
+
+        <Controller
+          name="email"
+          control={control}
+          render={({ field }) => (
+            <TextField
+              {...field}
+              label="メールアドレス"
+              fullWidth
+              multiline
+              margin="normal"
+            />
+          )}
+        />
+
+        <Controller
+          name="password"
+          control={control}
+          render={({ field }) => (
+            <PasswordInput
+              id="password"
+              {...field}
+              inputRef={field.ref}
+              sx={{width: '100%'}}
+            />
+          )}
+        />
+
+        <Button
+          variant='contained'
+          onClick={handleSubmit(handleLoginSubmit)}
+          sx={{
+            display: 'block',
+            marginX: 'auto',
+          }}
         >
-          <CardContent>
+          ログイン
+        </Button>
 
-            <Typography>
-              会員ログイン
-            </Typography>
+        <Link href="#">
+          パスワードを忘れた方はこちら
+        </Link>
 
-            <Controller
-              name="email"
-              control={control}
-              render={({ field }) => (
-                <TextField
-                  {...field}
-                  label="メールアドレス"
-                  fullWidth
-                  multiline
-                  margin="normal"
-                />
-              )}
-            />
+        <Button
+          variant='contained'
+          sx={{
+            display: 'block',
+            marginX: 'auto',
+          }}
+        >
+          新規会員登録はこちら
+        </Button>
 
-            <Controller
-              name="password"
-              control={control}
-              render={({ field }) => (
-                <PasswordInput
-                  id="password"
-                  {...field}
-                  inputRef={field.ref}
-                  sx={{width: '100%'}}
-                />
-              )}
-            />
+      </CardContent>
 
-            <Button
-              variant='contained'
-              onClick={handleSubmit(handleLoginSubmit)}
-              sx={{
-                display: 'block',
-                marginX: 'auto',
-              }}
-            >
-              ログイン
-            </Button>
-
-            <Link href="#">
-              パスワードを忘れた方はこちら
-            </Link>
-
-            <Button
-              variant='contained'
-              sx={{
-                display: 'block',
-                marginX: 'auto',
-              }}
-            >
-              新規会員登録はこちら
-            </Button>
-
-          </CardContent>
-
-          <GenericToast open={open} setOpen={setOpen} message={message} />
-        </Card>
-      </RedirectIfAuthenticated>
-    </AuthProvider>
+      <GenericToast open={open} setOpen={setOpen} message={message} />
+    </Card>
   )
 }
