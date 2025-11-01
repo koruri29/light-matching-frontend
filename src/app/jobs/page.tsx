@@ -7,6 +7,7 @@ import { Posts } from '@/app/jobs/Posts'
 import { Container } from '@mui/material'
 import { CONTENT_WIDTH } from '@/constants/styles'
 import { fetchJobSummary } from '@/lib/fetchJobSummary'
+import Link from 'next/link'
 
 
 // const tmpJobPostInfo: JobPostView = {
@@ -40,6 +41,10 @@ const JobsPage = async () => {
         width: CONTENT_WIDTH,
       }}
     >
+      <Link href="/post">
+        ▶お仕事依頼投稿ページ
+      </Link>
+
       <Calendar
         jobCounts={jobSummary.data.job_counts_by_date}
       />
