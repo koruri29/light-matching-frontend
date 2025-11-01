@@ -4,7 +4,7 @@ import { formatDateToJapanese } from '@/utils/format'
 import { Card, CardContent, SxProps, Theme, Typography } from '@mui/material'
 import { JobTags } from '@/app/jobs/JobTags'
 import theme from '@theme'
-import MuiThemeProvider from '@/components/lib/MuiThemeProvider'
+import MuiThemeProvider from '@/components/provider/MuiThemeProvider'
 import { CONTENT_WIDTH } from '@/constants/styles'
 
 

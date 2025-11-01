@@ -27,14 +27,14 @@ import dayjs, { Dayjs } from 'dayjs';
 import isSameOrBefore from 'dayjs/plugin/isSameOrBefore';
 import { ContactMethod, YES_NO_OPTIONS } from '@/constants/constants';
 import { PrefectureLabel, PREFECTURES } from '@/constants/prefectures';
-import DatePickerWithProvider from '@/components/lib/DatePickerProvider';
+import DatePickerWithProvider from '@/components/provider/DatePickerProvider';
 import {
   JobPostForm,
 } from '@/types/index';
-import GenericToast from '@/components/GenericToast';
-import { formatFormData } from '@/features/post/utils/post';
-import { useCreateJobPost } from '@/features/post/hooks';
-import { useToast } from '@/hooks/useToast';
+import GenericToast from '@/components/toast/GenericToast';
+import { formatFormData } from '@/features/post/postUtils';
+import { useCreateJobPost } from '@/features/post/hooks/useCreateJobPost';
+import { useToast } from '@/components/toast/useToast';
 
 
 dayjs.extend(isSameOrBefore);

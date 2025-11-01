@@ -1,7 +1,7 @@
 import { NextCreateJobPostItems, SuccessWithMessage } from "@/types";
 import axios from "axios";
 import { useState } from "react";
-import { createJob } from "../../services/postApi.js";
+import { createJob } from "../../../services/postApi.js";
 
 export const useCreateJobPost = ()=> {
   const [loading, setLoading] = useState(false);

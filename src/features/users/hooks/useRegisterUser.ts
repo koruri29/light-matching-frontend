@@ -1,6 +1,6 @@
 import { UserRegisterForm } from "@/types";
 import { useState } from "react";
-import { registerUser } from "../../services/userApi";
+import { registerUser } from "../../../services/userApi";
 import axios from "axios";
 
 export const useRegisterUser = () => {

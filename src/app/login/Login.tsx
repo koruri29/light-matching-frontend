@@ -1,10 +1,10 @@
 'use client'
 
 import React from 'react'
-import GenericToast from '@/components/GenericToast'
+import GenericToast from '@/components/toast/GenericToast'
 import { PasswordInput } from '@/components/PasswordInput'
-import { useLogin } from '@/features/auth/login/hooks'
-import { useToast } from '@/hooks/useToast'
+import { useLogin } from '@/features/auth/hooks/useLogin'
+import { useToast } from '@/components/toast/useToast'
 import {
   Button,
   Card,

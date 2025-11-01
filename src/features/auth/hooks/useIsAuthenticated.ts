@@ -1,4 +1,4 @@
-import { useAuth } from './context';
+import { useAuth } from '@/features/auth/context/context';
 
 export const useIsAuthenticated = () => {
   const { user, loading } = useAuth();

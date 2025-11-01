@@ -11,10 +11,10 @@ import {
 import { Controller, useForm } from 'react-hook-form'
 import { PasswordInput } from '@/components/PasswordInput'
 import { UserRegisterForm } from '@/types'
-import { useRegisterUser } from '@/features/users/hooks'
-import GenericToast from '@/components/GenericToast'
-import { useToast } from '@/hooks/useToast'
-import { AuthProvider } from '@/features/auth/auth/context'
+import { useRegisterUser } from '@/features/users/hooks/useRegisterUser'
+import GenericToast from '@/components/toast/GenericToast'
+import { useToast } from '@/components/toast/useToast'
+import { AuthProvider } from '@/features/auth/context/context'
 import RedirectIfAuthenticated from '@/components/auth/RedirectIfAuthenticated'
 
 
