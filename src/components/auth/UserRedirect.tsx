@@ -6,15 +6,16 @@ import { useUser } from '@/features/auth/hooks/useUser';
 import { LOGIN } from '@/constants/paths';
 
 export default function UserRedirect({ redirectTo = LOGIN }: { redirectTo?: string }) {
-  const router = useRouter();
-  const { user } = useUser();
+  const router = useRouter()
+  const { user } = useUser()
 
   useEffect(() => {
+    // user が null なら未ログイン扱いでリダイレクト
     if (user === null) {
-      // 未ログインなら即リダイレクト
-      router.replace(redirectTo);
+      router.replace(redirectTo)
     }
-  }, [user, redirectTo, router]);
+    // user が undefined の場合はまだ読み込み中なので何もしない
+  }, [user, redirectTo, router])
 
-  return null;
+  return null
 }
