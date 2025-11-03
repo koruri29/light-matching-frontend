@@ -28,7 +28,7 @@ export const login = async (
 
 export const logout = async () => {
   // CSRF cookie を先に取得
-  // await apiClient.get('/sanctum/csrf-cookie');
+  await apiClient.get('/sanctum/csrf-cookie');
 
   return apiClient.post('/logout');
 };

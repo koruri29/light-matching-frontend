@@ -9,7 +9,6 @@ import { CONTENT_WIDTH } from "@/constants/styles";
 import { JobCountsByDate } from "@/types";
 import { renderDay } from "@/app/jobs/Calender/DayRenderer";
 import { StyledDateCalendar } from "@/app/jobs/Calender/CalenderStyle";
-import { getUser } from "@/services/authApi";
 
 
 interface CalenderProps {
@@ -19,16 +18,6 @@ interface CalenderProps {
 export const Calendar = ({
   jobCounts,
 }: CalenderProps) => {
-
-
-    React.useEffect(() => {
-      (async() => {
-        const user = await getUser()
-        console.log('user: ', user)
-      })()
-    }, [])
-
-
   const [value, setValue] = React.useState<Dayjs | null>(dayjs());
 
   return (
