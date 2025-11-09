@@ -1,8 +1,25 @@
 import { ContactMethod } from "@/constants/constants"
-import { Tag } from "@/types/post"
 
 
 export type JobsByDate = Record<string, number> // YYYY-MM-DD, 件数
+
+export interface JobPostDates {
+  id: number
+  job_post_id: number
+  work_date: string
+  number_of_position: number
+}
+
+export type JobTag = {
+  id: number
+  name: string
+  kana_name: string
+  sort_order: number
+  pivot?: {
+    job_post_id: number
+    job_tag_id: number
+  }
+}
 
 export interface JobView {
   id: string // job_posts.id
@@ -16,9 +33,9 @@ export interface JobView {
   payment?: string
   contact_method: keyof typeof ContactMethod
   is_closed: boolean
-  number_of_position: number
   deadline: string
-  tags: Tag[]
+  job_post_dates: JobPostDates[]
+  job_tags: JobTag[]
 }
 
 export interface PaginatedJobPosts {

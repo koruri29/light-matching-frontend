@@ -1,12 +1,15 @@
-import { JobCountsByDate } from "@/types";
+import { JobsByDate } from "@/types";
 import { PickersDayProps } from "@mui/x-date-pickers";
 import { StyledPickersDay } from "@/app/jobs/Calender/CalenderStyle";
 
 
-export const renderDay = (props: PickersDayProps, jobCounts: JobCountsByDate) => {
+export const renderDay = (props: PickersDayProps, jobCounts: JobsByDate) => {
   const { day, outsideCurrentMonth, ...other } = props;
   const dateStr = day.format("YYYY-MM-DD");
-  const jobNumber = jobCounts[dateStr];
+  let jobNumber = undefined;
+  if (jobCounts && jobCounts[dateStr] !== undefined) {
+    jobNumber = jobCounts[dateStr];
+  }
 
   return (
     <StyledPickersDay

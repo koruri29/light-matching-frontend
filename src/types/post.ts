@@ -15,7 +15,7 @@ export interface JobPost {
   number_of_position: number
 }
 
-export type Tag = typeof TAGS[keyof typeof TAGS];
+export type TagNameUnion = typeof TAGS[keyof typeof TAGS];
 
 export interface JobPostDate {
   work_date: string
