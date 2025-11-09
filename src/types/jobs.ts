@@ -1,10 +1,8 @@
 import { ContactMethod } from "@/constants/constants"
 import { Tag } from "@/types/post"
-import { ApiResponse } from "./response"
 
 
-
-export type JobCountsByDate = Record<string, number>
+export type JobsByDate = Record<string, number> // YYYY-MM-DD, 件数
 
 export interface JobView {
   id: string // job_posts.id
@@ -23,11 +21,22 @@ export interface JobView {
   tags: Tag[]
 }
 
-export interface JobSummary {
-  job_counts_by_date : JobCountsByDate,
-  jobs: JobView[]
-}
-
-export interface JobSummaryResponse extends ApiResponse {
-  data: JobSummary
+export interface PaginatedJobPosts {
+  current_page: number;
+  data: JobView[];
+  first_page_url: string | null;
+  from: number | null;
+  last_page: number;
+  last_page_url: string | null;
+  links: Array<{
+    url: string | null;
+    label: string;
+    active: boolean;
+  }>;
+  next_page_url: string | null;
+  path: string;
+  per_page: number;
+  prev_page_url: string | null;
+  to: number | null;
+  total: number;
 }
