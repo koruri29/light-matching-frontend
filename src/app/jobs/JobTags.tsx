@@ -2,6 +2,7 @@ import React from 'react'
 import { Typography } from '@mui/material'
 import theme from '@theme'
 import { TAGS } from '@/constants/constants'
+import { JobTag } from '@/types'
 
 
 interface TagItemProps {
@@ -54,13 +55,17 @@ const TagItem = ({
 }
 
 interface JobTagsProps {
-  tags: (typeof TAGS)[keyof typeof TAGS][]
+  tags: JobTag[]
 }
 
 export const JobTags = ({
-  // tags,
+  tags,
 }: JobTagsProps) => {
 
+  const pinSelected = tags.some(t => t.name === TAGS.PIN)
+  const trussSelected = tags.some(t => t.name === TAGS.TRUSS)
+  const preStaySelected = tags.some(t => t.name === TAGS.PRE_STAY)
+  const postStaySelected = tags.some(t => t.name === TAGS.POST_STAY)
 
   return (
     <div
@@ -71,12 +76,12 @@ export const JobTags = ({
       >
         <TagItem
           label='ピン作業あり'
-          selected={true}
+          selected={pinSelected}
 
         />
         <TagItem
           label='トラス作業あり'
-          selected={false}
+          selected={trussSelected}
 
         />
       </div>
@@ -86,11 +91,11 @@ export const JobTags = ({
         >
       <TagItem
         label='前泊の可能性あり'
-        selected={true}
+        selected={preStaySelected}
         />
       <TagItem
         label='後泊の可能性あり'
-        selected={true}
+        selected={postStaySelected}
         />
       </div>
 

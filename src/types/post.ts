@@ -13,7 +13,7 @@ export interface JobPost {
   deadline: string
 }
 
-export type Tag = typeof TAGS[keyof typeof TAGS];
+export type TagNameUnion = typeof TAGS[keyof typeof TAGS];
 
 export interface JobPostDate {
   work_date: string

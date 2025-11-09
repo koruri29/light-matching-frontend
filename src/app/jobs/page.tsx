@@ -2,11 +2,8 @@ import React from 'react'
 import { Calendar } from '@/app/jobs/Calender/Calender'
 import { Search } from '@/app/jobs/Search'
 import { Posts } from '@/app/jobs/Posts'
-// import { JobPostView } from '@/types/index'
-// import { ContactMethod, TAGS } from '@/constants/constants'
 import { Container } from '@mui/material'
 import { CONTENT_WIDTH } from '@/constants/styles'
-import { fetchJobSummary } from '@/lib/fetchJobSummary'
 import Link from 'next/link'
 import UserRedirect from '@/components/auth/UserRedirect'
 
@@ -34,8 +31,6 @@ import UserRedirect from '@/components/auth/UserRedirect'
 // }
 
 const JobsPage = async () => {
-  const jobSummary = await fetchJobSummary()
-
   return (
     <>
     <UserRedirect />
@@ -48,15 +43,11 @@ const JobsPage = async () => {
           ▶お仕事依頼投稿ページ
         </Link>
 
-        <Calendar
-          jobCounts={jobSummary.data.job_counts_by_date}
-        />
+        <Calendar />
 
         <Search />
 
-        <Posts
-          posts={jobSummary.data.jobs}
-        />
+        <Posts />
       </Container>
     </>
   )
