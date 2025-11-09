@@ -17,7 +17,7 @@ export const useUser = () => {
       // フロントでセッションエラー（401/419）を検出したら
       // サーバー側で強制的にクッキーを削除してもらう
       try {
-        const forceLogoutUrl = `${process.env.NEXT_PUBLIC_API_URL}/api/force-logout`
+        const forceLogoutUrl = `${process.env.NEXT_PUBLIC_API_URL}/force-logout`
         await apiClient.post(forceLogoutUrl, {})
       } catch (forceErr) {
         console.warn('Force logout failed:', forceErr)
@@ -33,7 +33,7 @@ export const useUser = () => {
     } catch (error) {
       console.error('Logout failed:', error)
       try {
-        const forceLogoutUrl = `${process.env.NEXT_PUBLIC_API_URL}/api/force-logout`
+        const forceLogoutUrl = `${process.env.NEXT_PUBLIC_API_URL}/force-logout`
         await apiClient.post(forceLogoutUrl, {})
       } catch (forceErr) {
         console.warn('Force logout failed:', forceErr)
