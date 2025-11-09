@@ -2,7 +2,6 @@ import { ContactMethod, TagBooleanMap, TAGS } from "@/constants/constants"
 
 
 export interface JobPost {
-  client_id: string
   event_name: string
   prefecture: string
   location: string
@@ -12,13 +11,13 @@ export interface JobPost {
   is_public: boolean
   is_closed: boolean
   deadline: string
-  number_of_position: number
 }
 
 export type Tag = typeof TAGS[keyof typeof TAGS];
 
 export interface JobPostDate {
   work_date: string
+  number_of_position: number
   start_time?: string
   end_time?: string
 }
