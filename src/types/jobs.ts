@@ -1,10 +1,25 @@
 import { ContactMethod } from "@/constants/constants"
-import { Tag } from "@/types/post"
-import { ApiResponse } from "./response"
 
 
+export type JobsByDate = Record<string, number> // YYYY-MM-DD, 件数
 
-export type JobCountsByDate = Record<string, number>
+export interface JobPostDates {
+  id: number
+  job_post_id: number
+  work_date: string
+  number_of_position: number
+}
+
+export type JobTag = {
+  id: number
+  name: string
+  kana_name: string
+  sort_order: number
+  pivot?: {
+    job_post_id: number
+    job_tag_id: number
+  }
+}
 
 export interface JobView {
   id: string // job_posts.id
@@ -18,16 +33,27 @@ export interface JobView {
   payment?: string
   contact_method: keyof typeof ContactMethod
   is_closed: boolean
-  number_of_position: number
   deadline: string
-  tags: Tag[]
+  job_post_dates: JobPostDates[]
+  job_tags: JobTag[]
 }
 
-export interface JobSummary {
-  job_counts_by_date : JobCountsByDate,
-  jobs: JobView[]
-}
-
-export interface JobSummaryResponse extends ApiResponse {
-  data: JobSummary
+export interface PaginatedJobPosts {
+  current_page: number;
+  data: JobView[];
+  first_page_url: string | null;
+  from: number | null;
+  last_page: number;
+  last_page_url: string | null;
+  links: Array<{
+    url: string | null;
+    label: string;
+    active: boolean;
+  }>;
+  next_page_url: string | null;
+  path: string;
+  per_page: number;
+  prev_page_url: string | null;
+  to: number | null;
+  total: number;
 }

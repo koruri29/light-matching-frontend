@@ -113,39 +113,71 @@ export function middleware(req: NextRequest) {
 
 ---
 
-## 🧩 環境構築メモ（開発環境）
+## ⚙️ 開発環境セットアップ手順
 
-### Frontend
+1. **リポジトリをクローン**
+
 ```bash
+git clone https://github.com/koruri29/light-matching-frontend.git
+cd light-matching-frontend
+```
+
+2. **環境変数を作成**
+
+```bash
+cp .env.example .env.local
+```
+
+必要に応じて、`NEXT_PUBLIC_API_URL` などの値をバックエンドに合わせて編集。
+
+3. **パッケージをインストール**
+
+```bash
+pnpm install
+# または
 npm install
-npm run dev
+# または
+yarn install
 ```
 
-### Backend (Laravel)
+4. **開発サーバ起動**
+
 ```bash
-composer install
-php artisan migrate
-php artisan serve
+pnpm dev
+# または
+npm run dev
+# または
+yarn dev
 ```
 
-### 環境変数
-`.env.local`（Next.js）  
-```
-NEXT_PUBLIC_API_URL=http://localhost:8000
-```
-
-`.env`（Laravel）  
-```
-SANCTUM_STATEFUL_DOMAINS=localhost:3000
-SESSION_DOMAIN=localhost
-```
+ブラウザで `http://localhost:3000` にアクセス可能。
 
 ---
 
-## 📷 スクリーンショット（予定）
-- [ ] ログイン画面
-- [ ] 求人一覧画面
-- [ ] 応募フォーム（実装後）
+## 🌟 初期操作
+
+1. `http://localhost:3000/login` にアクセス  
+2. デフォルトのアカウントでログイン (要API側セットアップ)
+   - メール：`client1@example.com`  
+   - パスワード：`password`  
+3. 募集一覧ページに遷移  
+4. 画面上部の「お仕事依頼投稿ページ」を押下  
+5. 投稿ページで必要項目を入力して投稿  
+6. 投稿後、`http://localhost:3000/jobs` に戻ると、一覧に反映されていることを確認
+
+---
+
+---
+
+## 📷 スクリーンショット
+- ログイン画面
+![ログイン画面](./public/README/login.png)
+
+- 応募フォーム
+![投稿フォーム](./public/README/form.png)
+
+- 求人一覧画面
+![カレンダー、募集一覧](./public/README/calender_job-view.png)
 
 ---
 
@@ -173,13 +205,6 @@ src/
 └── types/            # 型定義（APIレスポンス・共通型）
     └── index.d.ts
 ```
-
-
----
-
-## 🧭 補足
-このリポジトリはポートフォリオ兼技術演習として公開予定です。  
-商用データは含まず、構成と設計力の提示を目的としています。
 
 ---
 

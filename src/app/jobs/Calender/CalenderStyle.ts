@@ -1,3 +1,5 @@
+'use client'
+
 import { CONTENT_WIDTH } from "@/constants/styles";
 import { styled } from "@mui/material";
 import { DateCalendar, PickersDay } from "@mui/x-date-pickers";
@@ -60,7 +62,7 @@ export const StyledPickersDay = styled(PickersDay)(() => ({
     marginTop: '0.25rem',
   },
   '& .job-number': {
-    color: theme.palette.text.primary,
+    color: theme.palette.info.main,
     textDecoration: 'underline',
   },
 

@@ -10,7 +10,6 @@ import { Dayjs } from "dayjs"
 export const formatFormData = (formData: JobPostForm): NextCreateJobPostItems => {
   // 依頼の成形
   const jobPost: JobPost = {
-    client_id: '1', // TODO: 認証できたら修正
     event_name: formData.event_name,
     prefecture: formData.prefecture,
     location: formData.location,
@@ -18,9 +17,6 @@ export const formatFormData = (formData: JobPostForm): NextCreateJobPostItems =>
     contact_method: formData.contact_method,
     is_public: formData.is_public === YES_NO_OPTIONS.YES,
     is_closed: false,
-    number_of_position: formData.number_of_position
-      ? parseInt(formData.number_of_position)
-      : 0,
     deadline: formData.deadline ? formData.deadline.format('YYYY-MM-DD') : '',
   }
   if (formData.payment) jobPost.payment = formData.payment
@@ -36,10 +32,12 @@ export const formatFormData = (formData: JobPostForm): NextCreateJobPostItems =>
 
   // 日付
   const dates: JobPostDate[] = []
-  const workDates = generateDateRange(formData.start_date, formData.end_date)
-  for (const workDate of workDates) {
+  for (const workDate of formData.work_dates) {
+    const number_of_position = Number(workDate.number_of_position)
     const date: JobPostDate = {
-      work_date: workDate,
+      work_date: workDate.work_date,
+      number_of_position:
+        isNaN(number_of_position) ? 0 : number_of_position,
     }
     dates.push(date)
   }
@@ -51,7 +49,7 @@ export const formatFormData = (formData: JobPostForm): NextCreateJobPostItems =>
   }
 }
 
-function generateDateRange(startDate: Dayjs | null, endDate: Dayjs | null): string[] {
+export function generateDateRange(startDate: Dayjs | null, endDate: Dayjs | null): string[] {
   if (!startDate || !endDate) return []
 
   const dates: string[] = [];

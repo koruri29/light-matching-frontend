@@ -2,11 +2,10 @@ import React from 'react'
 import { Calendar } from '@/app/jobs/Calender/Calender'
 import { Search } from '@/app/jobs/Search'
 import { Posts } from '@/app/jobs/Posts'
-// import { JobPostView } from '@/types/index'
-// import { ContactMethod, TAGS } from '@/constants/constants'
 import { Container } from '@mui/material'
 import { CONTENT_WIDTH } from '@/constants/styles'
-import { fetchJobSummary } from '@/lib/fetchJobSummary'
+import Link from 'next/link'
+import UserRedirect from '@/components/auth/UserRedirect'
 
 
 // const tmpJobPostInfo: JobPostView = {
@@ -32,24 +31,25 @@ import { fetchJobSummary } from '@/lib/fetchJobSummary'
 // }
 
 const JobsPage = async () => {
-  const jobSummary = await fetchJobSummary()
-
   return (
-    <Container
-      sx={{
-        width: CONTENT_WIDTH,
-      }}
-    >
-      <Calendar
-        jobCounts={jobSummary.data.job_counts_by_date}
-      />
+    <>
+    <UserRedirect />
+      <Container
+        sx={{
+          width: CONTENT_WIDTH,
+        }}
+      >
+        <Link href="/post">
+          ▶お仕事依頼投稿ページ
+        </Link>
 
-      <Search />
+        <Calendar />
 
-      <Posts
-        posts={jobSummary.data.jobs}
-      />
-    </Container>
+        <Search />
+
+        <Posts />
+      </Container>
+    </>
   )
 }
 

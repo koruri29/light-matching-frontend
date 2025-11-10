@@ -24,11 +24,11 @@ export const useLogin = () => {
     try {
       const data = await login(email, password);
 
-      if (data.status === 200) {
+      if (data.data.success) {
         return { success: true, message: 'ログイン成功' };
       }
 
-      console.error(data.message)
+      console.error(data)
 
       return {
         success: false,

@@ -1,10 +1,10 @@
 import { apiClient } from '@/lib/apiClient';
 import { LoginResponse, User } from '@/types';
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
 
 export const getUser = async (): Promise<User | null> => {
   try {
-    await apiClient.get('/sanctum/csrf-cookie');
+    // await apiClient.get('/sanctum/csrf-cookie');
     const res = await apiClient.get('/api/user');  // APIエンドポイントを確認
     return res.data;
   } catch (error) {
@@ -17,7 +17,10 @@ export const getUser = async (): Promise<User | null> => {
   }
 };
 
-export const login = async (email: string, password: string): Promise<LoginResponse> => {
+export const login = async (
+  email: string,
+  password: string,
+): Promise<AxiosResponse<LoginResponse>> => {
   await apiClient.get('/sanctum/csrf-cookie');
 
   return apiClient.post('/login', { email, password });
@@ -25,7 +28,7 @@ export const login = async (email: string, password: string): Promise<LoginRespo
 
 export const logout = async () => {
   // CSRF cookie を先に取得
-  // await apiClient.get('/sanctum/csrf-cookie');
+  await apiClient.get('/sanctum/csrf-cookie');
 
   return apiClient.post('/logout');
 };

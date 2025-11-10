@@ -19,6 +19,10 @@ const theme = createTheme({
     secondary: {
       main: '#E9DBC4', // サンドベージュ（リンクやボタン系）
     },
+    info: {               // リンク用カラー
+      main: '#007BFF',    // 青（標準リンク色）
+      contrastText: '#fff',
+    },
     divider: '#D6D6D6', // クールグレー（ボーダー、区切り）
     error: {
       main: '#B35C50', // ダスティレッド（エラー）
