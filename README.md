@@ -8,6 +8,16 @@
 
 ---
 
+## 🌐 デプロイ先（本番環境）
+本番デプロイ先URL：[https://light-matching-frontend.vercel.app/](https://light-matching-frontend.vercel.app/login)
+
+- メール：`client1@example.com`  
+- パスワード：`password`  
+
+※バックエンドがスリープ中の場合はレスポンスに時間がかかります
+
+---
+
 ## 🧩 システム構成
 | 項目 | 内容 |
 |------|------|
