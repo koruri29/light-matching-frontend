@@ -23,12 +23,12 @@ export const login = async (
 ): Promise<AxiosResponse<LoginResponse>> => {
   await apiClient.get('/sanctum/csrf-cookie');
 
-  return apiClient.post('/login', { email, password });
+  return await apiClient.post('/login', { email, password });
 };
 
 export const logout = async () => {
   // CSRF cookie を先に取得
   await apiClient.get('/sanctum/csrf-cookie');
 
-  return apiClient.post('/logout');
+  return await apiClient.post('/logout');
 };
